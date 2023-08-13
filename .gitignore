@@ -130,3 +130,7 @@ dmypy.json
 
 #vscode
 .vscode/
+
+# Игнорировать все файлы с расширением .sqlite3 .sqlite
+.sqlite 
+.sqlite3
