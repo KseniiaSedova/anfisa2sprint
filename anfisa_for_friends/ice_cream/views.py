@@ -1,11 +1,16 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 
 from ice_cream.models import IceCream
+from core.models import PublishedModel
 
 
 def ice_cream_detail(request, pk):
     template = 'ice_cream/detail.html'
-    ice_cream = IceCream.objects.get(pk=pk)
+    ice_cream = get_object_or_404(
+        IceCream.objects.values('title', 'description').filter(
+        is_published=True),
+        pk=pk)
+    
     context = {
         'ice_cream': ice_cream,
     }
